@@ -17,3 +17,13 @@ Una vez allí ejecutar el siguiente comando:
 ```sh
 python3 main.py
 ```
+# Ejecutar la aplicación de estadisticas
+
+## Instrucciones:
+```sh
+cd app
+python3 -m venv env
+source env/bin/activate
+pip3 install -r requirements.txt
+python3 main.py
+```
