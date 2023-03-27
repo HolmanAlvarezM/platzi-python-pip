@@ -1,11 +1,12 @@
 import utils
 import read_csv
 import charts
+import pandas as pd
 
 def run():
   option = select_option()
   data = read_csv.read_csv('data.csv')
-
+  
   if option == 1:
     show_population(data)
   else:
@@ -58,11 +59,17 @@ def show_world_population(data):
     continent = 'Oceania'
   else:
     continent = 'South America'
-
+  
+  '''
   data = list(filter(lambda item: item['Continent'] == continent, data))
   countries = list(map(lambda x: x['Country/Territory'], data))
   percents = list(map(lambda x: x['World Population Percentage'], data))
+  '''
+  df = pd.read_csv('data.csv')
+  df = df[df['Continent'] == continent]
+  countries = df['Country/Territory'].values
+  percents = df['World Population Percentage'].values
   charts.generate_pie_chart(continent, countries, percents)
-
+  
 if __name__ == '__main__':
   run()
